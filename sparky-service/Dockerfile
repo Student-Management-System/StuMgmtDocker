@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 
+ARG SPARKY_VERSION
 ARG SPARKY_DB_PW
 ARG SPARKY_ADMIN_USER=admin_user
 ARG SPARKY_ADMIN_PW
@@ -14,8 +15,9 @@ RUN apt install -y openjdk-11-jre-headless libpostgresql-jdbc-java
 
 WORKDIR /opt/SparkyService
 
-ADD sparkyservice-api-*-spring-boot.jar ./sparkyservice-spring-boot.jar
+ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Sparkyservice-Project/lastSuccessfulBuild/artifact/target/sparkyservice-api-${SPARKY_VERSION}-spring-boot.jar ./sparkyservice-spring-boot.jar
 ADD application-release.properties ./application-release.properties
+
 
 RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|g" ./application-release.properties
 RUN sed -i "s|__SPARKY_ADMIN_USER__|${SPARKY_ADMIN_USER}|g" ./application-release.properties

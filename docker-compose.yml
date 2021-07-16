@@ -4,11 +4,10 @@ services:
     postgres:
         image: postgres
         container_name: postgres
-        restart: always
         environment:
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-            SPARKY_DB_PW: ${SPARKY_DB_PW}
-            BACKEND_DB_PW: ${BACKEND_DB_PW}
+            - POSTGRES_PASSWORD
+            - SPARKY_DB_PW
+            - BACKEND_DB_PW
         volumes:
             - ./init-sparky.sh:/docker-entrypoint-initdb.d/1-init-sparky.sh
             - ./init-stu-mgmt-backend.sh:/docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sh
@@ -16,6 +15,18 @@ services:
     sparky-service:
         image: stu-mgmt/sparky-service
         container_name: sparky-service
+        build:
+            context: ./sparky-service
+            args:
+                - SPARKY_VERSION
+                - SPARKY_DB_PW
+                - SPARKY_ADMIN_USER
+                - SPARKY_ADMIN_PW
+                - SPARKY_JWT_SECRET
+                - SPARKY_LDAP
+                - SPARKY_LDAP_DOMAIN
+                - SPARKY_LDAP_URLS
+                - SPARKY_LDAP_AD
         ports:
             - 8080:8080
         depends_on:
@@ -24,6 +35,15 @@ services:
     stu-mgmt-backend:
         image: stu-mgmt/stu-mgmt-backend
         container_name: stu-mgmt-backend
+        build:
+            context: ./stu-mgmt-backend
+            args:
+                - BACKEND_DB_PW
+                - BACKEND_MAIL_ENABLED
+                - BACKEND_MAIL_SERVER
+                - BACKEND_MAIL_USERNAME
+                - BACKEND_MAIL_PASSWORD
+                - BACKEND_MAIL_PORT
         # uncomment this if the backend should be reachable from outside the docker network
         #ports:
             #- 3000:3000
@@ -34,6 +54,11 @@ services:
     stu-mgmt-frontend:
         image: stu-mgmt/stu-mgmt-frontend
         container_name: stu-mgmt-frontend
+        build:
+            context: ./stu-mgmt-frontend
+            args:
+                - FRONTEND_SPARKY_HOST
+                - FRONTEND_WEBMASTER
         ports:
             - 8000:80
         depends_on:

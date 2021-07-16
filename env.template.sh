@@ -7,6 +7,8 @@ export POSTGRES_PASSWORD=some_pw0
 
 ### Sparky Service ###
 
+export SPARKY_VERSION=1.0.1-SNAPSHOT
+
 export SPARKY_DB_PW=some_pw1
 
 export SPARKY_ADMIN_USER=admin_user

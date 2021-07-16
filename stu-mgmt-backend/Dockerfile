@@ -9,9 +9,8 @@ ARG BACKEND_MAIL_PORT
 
 WORKDIR /opt/StudentMgmtBackend
 
-COPY package*.json ./
-COPY config ./config
-COPY dist ./dist
+ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Backend/lastSuccessfulBuild/artifact/Backend.tar.gz ./Backend.tar.gz
+RUN tar -xf Backend.tar.gz && rm Backend.tar.gz
 
 RUN npm install
 
