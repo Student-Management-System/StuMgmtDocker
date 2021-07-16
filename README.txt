@@ -1,4 +1,4 @@
-1) run `./download-all.sh` and `build-all.sh`
+1) run `./download-all.sh` and `./build-all.sh`
 	* this will go through all sub-directories and call `./download.sh` and `./build.sh`
 	* this builds all required docker images and calls `docker-compose up --no-start`
 2) to start services, call `./run.sh`
