@@ -1,9 +1,11 @@
 FROM node:14
 
 ARG BACKEND_DB_PW
-ARG BACKEND_JWT_SECRET
+ARG BACKEND_MAIL_ENABLED=false
 ARG BACKEND_MAIL_SERVER
 ARG BACKEND_MAIL_USERNAME
+ARG BACKEND_MAIL_PASSWORD
+ARG BACKEND_MAIL_PORT
 
 WORKDIR /opt/StudentMgmtBackend
 
@@ -15,10 +17,12 @@ RUN npm install
 
 ADD production.yml ./config/production.yml
 
-RUN sed -i "s|__BACKEND_DB_PW__|${BACKEND_DB_PW}|" ./config/production.yml
-RUN sed -i "s|__BACKEND_JWT_SECRET__|${BACKEND_JWT_SECRET}|" ./config/production.yml
-RUN sed -i "s|__BACKEND_MAIL_SERVER__|${BACKEND_MAIL_SERVER}|" ./config/production.yml
-RUN sed -i "s|__BACKEND_MAIL_USERNAME__|${BACKEND_MAIL_USERNAME}|" ./config/production.yml
+RUN sed -i "s|__BACKEND_DB_PW__|${BACKEND_DB_PW}|g" ./config/production.yml
+RUN sed -i "s|__BACKEND_MAIL_ENABLED__|${BACKEND_MAIL_ENABLED}|g" ./config/production.yml
+RUN sed -i "s|__BACKEND_MAIL_SERVER__|${BACKEND_MAIL_SERVER}|g" ./config/production.yml
+RUN sed -i "s|__BACKEND_MAIL_USERNAME__|${BACKEND_MAIL_USERNAME}|g" ./config/production.yml
+RUN sed -i "s|__BACKEND_MAIL_PASSWORD__|${BACKEND_MAIL_PASSWORD}|g" ./config/production.yml
+RUN sed -i "s|__BACKEND_MAIL_PORT__|${BACKEND_MAIL_PORT}|g" ./config/production.yml
 
 EXPOSE 3000
 

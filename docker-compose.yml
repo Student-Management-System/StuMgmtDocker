@@ -24,6 +24,9 @@ services:
     stu-mgmt-backend:
         image: stu-mgmt/stu-mgmt-backend
         container_name: stu-mgmt-backend
+        # uncomment this if the backend should be reachable from outside the docker network
+        #ports:
+            #- 3000:3000
         depends_on:
             - postgres
             - sparky-service

@@ -17,14 +17,14 @@ WORKDIR /opt/SparkyService
 ADD sparkyservice-api-*-spring-boot.jar ./sparkyservice-spring-boot.jar
 ADD application-release.properties ./application-release.properties
 
-RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_ADMIN_USER__|${SPARKY_ADMIN_USER}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_ADMIN_PW__|${SPARKY_ADMIN_PW}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_JWT_SECRET__|${SPARKY_JWT_SECRET}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_LDAP__|${SPARKY_LDAP}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_LDAP_DOMAIN__|${SPARKY_LDAP_DOMAIN}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_LDAP_URLS__|${SPARKY_LDAP_URLS}|" ./application-release.properties
-RUN sed -i "s|__SPARKY_LDAP_AD__|${SPARKY_LDAP_AD}|" ./application-release.properties
+RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_ADMIN_USER__|${SPARKY_ADMIN_USER}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_ADMIN_PW__|${SPARKY_ADMIN_PW}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_JWT_SECRET__|${SPARKY_JWT_SECRET}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_LDAP__|${SPARKY_LDAP}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_LDAP_DOMAIN__|${SPARKY_LDAP_DOMAIN}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_LDAP_URLS__|${SPARKY_LDAP_URLS}|g" ./application-release.properties
+RUN sed -i "s|__SPARKY_LDAP_AD__|${SPARKY_LDAP_AD}|g" ./application-release.properties
 
 EXPOSE 8080
 

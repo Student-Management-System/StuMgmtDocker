@@ -12,7 +12,7 @@ export SPARKY_DB_PW=some_pw1
 export SPARKY_ADMIN_USER=admin_user
 export SPARKY_ADMIN_PW=some_pw2
 
-export SPARKY_JWT_SECRET="some_secret1"
+export SPARKY_JWT_SECRET="some_secret"
 
 export SPARKY_LDAP=false
 export SPARKY_LDAP_DOMAIN=
@@ -23,10 +23,11 @@ export SPARKY_LDAP_AD=
 
 export BACKEND_DB_PW=some_pw3
 
-export BACKEND_JWT_SECRET="some_secret2"
-
+export BACKEND_MAIL_ENABLED=false
 export BACKEND_MAIL_SERVER=mail.company.org
 export BACKEND_MAIL_USERNAME=stu-mgmt@company.org
+export BACKEND_MAIL_PASSWORD=some_pw4
+export BACKEND_MAIL_PORT=587
 
 ### Stu-Mgmt Frontend ###
 
