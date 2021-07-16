@@ -3,7 +3,6 @@ version: "3"
 services:
     postgres:
         image: postgres
-        container_name: postgres
         environment:
             - POSTGRES_PASSWORD
             - SPARKY_DB_PW
@@ -14,7 +13,6 @@ services:
 
     sparky-service:
         image: stu-mgmt/sparky-service
-        container_name: sparky-service
         build:
             context: ./sparky-service
             args:
@@ -34,7 +32,6 @@ services:
 
     stu-mgmt-backend:
         image: stu-mgmt/stu-mgmt-backend
-        container_name: stu-mgmt-backend
         build:
             context: ./stu-mgmt-backend
             args:
@@ -53,7 +50,6 @@ services:
 
     stu-mgmt-frontend:
         image: stu-mgmt/stu-mgmt-frontend
-        container_name: stu-mgmt-frontend
         build:
             context: ./stu-mgmt-frontend
             args:
@@ -61,5 +57,3 @@ services:
                 - FRONTEND_WEBMASTER
         ports:
             - 8000:80
-        depends_on:
-            - stu-mgmt-backend
