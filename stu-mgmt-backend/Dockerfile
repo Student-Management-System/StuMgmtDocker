@@ -24,4 +24,5 @@ RUN sed -i "s|__BACKEND_MAIL_USERNAME__|${BACKEND_MAIL_USERNAME}|" ./config/prod
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start:prod" ]
+ENV NODE_ENV=production
+CMD [ "node", "dist/src/main" ]
