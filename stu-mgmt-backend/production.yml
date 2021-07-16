@@ -11,10 +11,10 @@ db:
   synchronize: true
 
 mailing:
-  enabled: false
+  enabled: __BACKEND_MAIL_ENABLED__
   smtp:
     host: "__BACKEND_MAIL_SERVER__"
-    useSecureConnection: __BACKEND_MAIL_ENABLED__
+    useSecureConnection: false
     username: "__BACKEND_MAIL_USERNAME__"
     password: "__BACKEND_MAIL_PASSWORD__"
     port: __BACKEND_MAIL_PORT__
