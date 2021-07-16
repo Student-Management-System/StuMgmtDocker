@@ -4,7 +4,7 @@
 
 2) run `docker compose build` to build all required docker images
 
-3) run `docker compose up -d` to (if required create and) run the containers as daemons
+3) run `docker compose up -d` to run (and if required, also create) the containers (-d means run as daemon)
 
 4) run `docker compose stop` to stop the containers
 	* run `docker compose down` to stop **and remove** the containers (removes state)
