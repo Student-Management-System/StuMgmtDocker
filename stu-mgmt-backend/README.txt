@@ -1,4 +1,4 @@
-1) download Backend.tar.gz and extract content in this directory (there should be a package.json in this directory afterwards)
+1) ./download.sh
 2) ./build.sh
 
 TODO:
