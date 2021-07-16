@@ -1,5 +1,5 @@
-1) `source env.sh` to make the required environment variables available to subsequent commands
-	* if required, create an appropriate env.sh from env.template.sh
+1) `source args.sh` to make the required environment variables available to subsequent commands
+	* if required, create an appropriate args.sh from args.template.sh
 	* the pipe character `|` is generally not allowed in the values, as it leads to problems for the sed command
 
 2) run `docker compose build` to build all required docker images

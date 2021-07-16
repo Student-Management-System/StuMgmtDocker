@@ -1,5 +1,5 @@
-# Template for env.sh
-# env.sh is not tracked, as it contains secret keys and passwords.
+# Template for args.sh, environment variables used as build args
+# Real args.sh is not tracked, as it contains secret keys and passwords.
 
 ### PostgreSQL ###
 
