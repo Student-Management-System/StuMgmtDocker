@@ -1,0 +1,28 @@
+server:
+  port: 3000
+
+db:
+  type: "postgres"
+  host: "postgres"
+  port: 5432
+  database: "studentmgmt_db"
+  username: "__BACKEND_DB_USER__"
+  password: "__BACKEND_DB_PW__"
+  synchronize: true
+
+smtp:
+  server: "__BACKEND_MAIL_SERVER__"
+  useSecureConnection: false
+  username: "__BACKEND_MAIL_USERNAME__"
+  port: 25
+
+authSystem:
+  url: "http://sparky-service:8080"
+
+jwt:
+  expiresIn: 36000
+  secret: "__BACKEND_JWT_SECRET__"
+
+logger:
+  requests: false
+  dbErrors: true

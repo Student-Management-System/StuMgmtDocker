@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+psql <<SQL
+	CREATE USER $SPARKY_DB_USER WITH PASSWORD '$SPARKY_DB_PW';
+	CREATE DATABASE sparky_db OWNER $SPARKY_DB_USER;
+SQL
