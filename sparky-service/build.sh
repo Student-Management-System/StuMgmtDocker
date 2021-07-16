@@ -5,7 +5,6 @@ set -e
 source ../env.sh
 
 docker build \
-	--build-arg SPARKY_DB_USER=$SPARKY_DB_USER \
 	--build-arg SPARKY_DB_PW=$SPARKY_DB_PW \
 	--build-arg SPARKY_ADMIN_USER=$SPARKY_ADMIN_USER \
 	--build-arg SPARKY_ADMIN_PW=$SPARKY_ADMIN_PW \

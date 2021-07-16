@@ -1,10 +1,12 @@
 # Template for env.sh
 # env.sh is not tracked, as it contains secret keys and passwords.
 
+### PostgreSQL ###
+
+export POSTGRES_PASSWORD=some_pw0
 
 ### Sparky Service ###
 
-export SPARKY_DB_USER=sparky_db_user
 export SPARKY_DB_PW=some_pw1
 
 export SPARKY_ADMIN_USER=admin_user
@@ -19,7 +21,6 @@ export SPARKY_LDAP_AD=
 
 ### Stu-Mgmt Backend ###
 
-export BACKEND_DB_USER=studentmgmt_db_user
 export BACKEND_DB_PW=some_pw3
 
 export BACKEND_JWT_SECRET="some_secret2"

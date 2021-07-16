@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 
-ARG SPARKY_DB_USER=sparky_db_user
 ARG SPARKY_DB_PW
 ARG SPARKY_ADMIN_USER=admin_user
 ARG SPARKY_ADMIN_PW
@@ -18,7 +17,6 @@ WORKDIR /opt/SparkyService
 ADD sparkyservice-api-*-spring-boot.jar ./sparkyservice-spring-boot.jar
 ADD application-release.properties ./application-release.properties
 
-RUN sed -i "s|__SPARKY_DB_USER__|${SPARKY_DB_USER}|" ./application-release.properties
 RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|" ./application-release.properties
 RUN sed -i "s|__SPARKY_ADMIN_USER__|${SPARKY_ADMIN_USER}|" ./application-release.properties
 RUN sed -i "s|__SPARKY_ADMIN_PW__|${SPARKY_ADMIN_PW}|" ./application-release.properties

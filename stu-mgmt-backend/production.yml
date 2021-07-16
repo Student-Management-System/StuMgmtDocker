@@ -6,7 +6,7 @@ db:
   host: "postgres"
   port: 5432
   database: "studentmgmt_db"
-  username: "__BACKEND_DB_USER__"
+  username: "studentmgmt_db_user"
   password: "__BACKEND_DB_PW__"
   synchronize: true
 
