@@ -1,6 +1,6 @@
 FROM httpd:2.4
 
-ARG FRONTEND_SPARKY_HOST=http://localhost
+ARG FRONTEND_SPARKY_HOST=http://localhost:8080
 ARG FRONTEND_WEBMASTER=webmaster@localhost
 
 COPY --chown=www-data:www-data dist/student-mgmt-client/ /var/www/html

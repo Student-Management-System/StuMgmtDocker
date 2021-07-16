@@ -29,6 +29,6 @@ export BACKEND_MAIL_USERNAME=stu-mgmt@company.org
 
 ### Stu-Mgmt Frontend ###
 
-export FRONTEND_PUBLIC_BASE_URL=http://localhost
+export FRONTEND_PUBLIC_BASE_URL=http://localhost:8080
 
 export FRONTEND_WEBMASTER=webmaster@localhost
