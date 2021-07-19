@@ -2,14 +2,13 @@ version: "3"
 
 services:
     postgres:
-        image: postgres
-        environment:
-            - POSTGRES_PASSWORD
-            - SPARKY_DB_PW
-            - BACKEND_DB_PW
-        volumes:
-            - ./init-sparky.sh:/docker-entrypoint-initdb.d/1-init-sparky.sh
-            - ./init-stu-mgmt-backend.sh:/docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sh
+        image: stu-mgmt/postgres
+        build:
+            context: ./postgres
+            args:
+                - POSTGRES_PASSWORD
+                - SPARKY_DB_PW
+                - BACKEND_DB_PW
 
     sparky-service:
         image: stu-mgmt/sparky-service
