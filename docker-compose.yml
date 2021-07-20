@@ -25,7 +25,7 @@ services:
                 - SPARKY_LDAP_URLS
                 - SPARKY_LDAP_AD
         ports:
-            - 8080:8080
+            - "${SPARKY_PORT:-8080}:8080"
         depends_on:
             - postgres
 
@@ -40,9 +40,9 @@ services:
                 - BACKEND_MAIL_USERNAME
                 - BACKEND_MAIL_PASSWORD
                 - BACKEND_MAIL_PORT
-        # uncomment this if the backend should be reachable from outside the docker network
-        #ports:
-            #- 3000:3000
+        # comment this if the backend should not be reachable from outside the docker network
+        ports:
+            - "${BACKEND_PORT:-3000}:3000"
         depends_on:
             - postgres
             - sparky-service
@@ -55,4 +55,4 @@ services:
                 - FRONTEND_SPARKY_HOST
                 - FRONTEND_WEBMASTER
         ports:
-            - 8000:80
+            - "${FRONTEND_PORT:-8000}:80"
