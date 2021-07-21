@@ -31,5 +31,6 @@ RUN sed -i "s|__BACKEND_MAIL_PORT__|${BACKEND_MAIL_PORT}|g" ./config/production.
 
 EXPOSE 3000
 
+USER node
 ENV NODE_ENV=production
 CMD [ "node", "dist/src/main" ]
