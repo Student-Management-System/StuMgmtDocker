@@ -9,22 +9,15 @@ ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Sparkyservice-Project/l
 
 ADD application-release.properties ./application-release.properties
 
-ARG SPARKY_DB_PW
-RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|g" ./application-release.properties
-ARG SPARKY_ADMIN_USER=admin_user
-RUN sed -i "s|__SPARKY_ADMIN_USER__|${SPARKY_ADMIN_USER}|g" ./application-release.properties
-ARG SPARKY_ADMIN_PW
-RUN sed -i "s|__SPARKY_ADMIN_PW__|${SPARKY_ADMIN_PW}|g" ./application-release.properties
-ARG SPARKY_JWT_SECRET
-RUN sed -i "s|__SPARKY_JWT_SECRET__|${SPARKY_JWT_SECRET}|g" ./application-release.properties
-ARG SPARKY_LDAP=false
-RUN sed -i "s|__SPARKY_LDAP__|${SPARKY_LDAP}|g" ./application-release.properties
-ARG SPARKY_LDAP_DOMAIN=
-RUN sed -i "s|__SPARKY_LDAP_DOMAIN__|${SPARKY_LDAP_DOMAIN}|g" ./application-release.properties
-ARG SPARKY_LDAP_URLS=
-RUN sed -i "s|__SPARKY_LDAP_URLS__|${SPARKY_LDAP_URLS}|g" ./application-release.properties
-ARG SPARKY_LDAP_AD=true
-RUN sed -i "s|__SPARKY_LDAP_AD__|${SPARKY_LDAP_AD}|g" ./application-release.properties
+# These env variables are used in application-release.properties:
+#  SPARKY_DB_PW
+#  SPARKY_ADMIN_USER
+#  SPARKY_ADMIN_PW
+#  SPARKY_JWT_SECRET
+#  SPARKY_LDAP
+#  SPARKY_LDAP_DOMAIN
+#  SPARKY_LDAP_URLS
+#  SPARKY_LDAP_AD
 
 EXPOSE 8080
 

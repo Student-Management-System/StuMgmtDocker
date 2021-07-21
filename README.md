@@ -1,10 +1,12 @@
+## Environment variables
+
+A bunch of environment variables contain configuration options that cannot be hardcoded (e.g. passwords). These are set via `args.sh`. If you don't have such a file, create one from `args.template.sh`. Make sure to `source args.sh` before calling any `docker compose` commands.
+
+Most environment variables must be present when running the docker containers. These can be changed without re-building images or containers (only re-starting is required). Only `SPARKY_VERSION` and `FRONTEND_WEBMASTER` are build args, that must be present when the images are built. Changes to these variables only take effect when re-building images.
+
 ## Building images
 
-1) `source args.sh` to make the required environment variables available to subsequent commands
-	* if required, create an appropriate `args.sh` from `args.template.sh`
-	* the pipe character `|` is generally not allowed in the values, as it leads to problems for the sed command
-
-2) run `docker compose build` to build all required docker images
+1) run `docker compose build` to build all required docker images
 
 ## Running containers
 

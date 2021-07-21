@@ -1,12 +1,10 @@
 FROM postgres:alpine
 
-ADD init-sparky.sql /docker-entrypoint-initdb.d/1-init-sparky.sql
-ADD init-stu-mgmt-backend.sql /docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sql
+ADD init-sparky.sh /docker-entrypoint-initdb.d/1-init-sparky.sh
+ADD init-stu-mgmt-backend.sh /docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sh
 
-ARG SPARKY_DB_PW
-ARG BACKEND_DB_PW
-RUN sed -i "s|__SPARKY_DB_PW__|${SPARKY_DB_PW}|g" /docker-entrypoint-initdb.d/1-init-sparky.sql
-RUN sed -i "s|__BACKEND_DB_PW__|${BACKEND_DB_PW}|g" /docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sql
-
-ARG POSTGRES_PASSWORD
-ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+# These environment variables are used in the init scripts:
+#  SPARKY_DB_PW
+#  BACKEND_DB_PW
+# Additionally, postgres uses:
+#  POSTGRES_PASSWORD

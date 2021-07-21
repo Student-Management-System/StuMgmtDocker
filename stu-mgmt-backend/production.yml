@@ -10,15 +10,6 @@ db:
   password: "__BACKEND_DB_PW__"
   synchronize: true
 
-mailing:
-  enabled: __BACKEND_MAIL_ENABLED__
-  smtp:
-    host: "__BACKEND_MAIL_SERVER__"
-    useSecureConnection: false
-    username: "__BACKEND_MAIL_USERNAME__"
-    password: "__BACKEND_MAIL_PASSWORD__"
-    port: __BACKEND_MAIL_PORT__
-
 authentication:
   url: "http://sparky-service:8080"
 

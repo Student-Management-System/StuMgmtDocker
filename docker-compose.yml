@@ -5,10 +5,10 @@ services:
         image: stu-mgmt/postgres
         build:
             context: ./postgres
-            args:
-                - POSTGRES_PASSWORD
-                - SPARKY_DB_PW
-                - BACKEND_DB_PW
+        environment:
+            - POSTGRES_PASSWORD
+            - SPARKY_DB_PW
+            - BACKEND_DB_PW
 
     sparky-service:
         image: stu-mgmt/sparky-service
@@ -16,14 +16,15 @@ services:
             context: ./sparky-service
             args:
                 - SPARKY_VERSION
-                - SPARKY_DB_PW
-                - SPARKY_ADMIN_USER
-                - SPARKY_ADMIN_PW
-                - SPARKY_JWT_SECRET
-                - SPARKY_LDAP
-                - SPARKY_LDAP_DOMAIN
-                - SPARKY_LDAP_URLS
-                - SPARKY_LDAP_AD
+        environment:
+            - SPARKY_DB_PW
+            - SPARKY_ADMIN_USER
+            - SPARKY_ADMIN_PW
+            - SPARKY_JWT_SECRET
+            - SPARKY_LDAP
+            - SPARKY_LDAP_DOMAIN
+            - SPARKY_LDAP_URLS
+            - SPARKY_LDAP_AD
         ports:
             - "${SPARKY_PORT:-8080}:8080"
         depends_on:
@@ -33,13 +34,13 @@ services:
         image: stu-mgmt/stu-mgmt-backend
         build:
             context: ./stu-mgmt-backend
-            args:
-                - BACKEND_DB_PW
-                - BACKEND_MAIL_ENABLED
-                - BACKEND_MAIL_SERVER
-                - BACKEND_MAIL_USERNAME
-                - BACKEND_MAIL_PASSWORD
-                - BACKEND_MAIL_PORT
+        environment:
+            - DB_PASSWORD=$BACKEND_DB_PW
+            - SMTP_ENABLED=$BACKEND_MAIL_ENABLED
+            - SMTP_HOST=$BACKEND_MAIL_SERVER
+            - SMTP_PORT=$BACKEND_MAIL_PORT
+            - SMTP_USERNAME=$BACKEND_MAIL_USERNAME
+            - SMTP_PASSWORD=$BACKEND_MAIL_PASSWORD
         # comment this if the backend should not be reachable from outside the docker network
         ports:
             - "${BACKEND_PORT:-3000}:3000"
@@ -52,7 +53,8 @@ services:
         build:
             context: ./stu-mgmt-frontend
             args:
-                - FRONTEND_SPARKY_HOST
                 - FRONTEND_WEBMASTER
+        environment:
+            - FRONTEND_API_BASE_URL
         ports:
             - "${FRONTEND_PORT:-8000}:80"
