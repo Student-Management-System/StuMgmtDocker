@@ -1,4 +1,4 @@
-FROM httpd:2.4
+FROM httpd:alpine
 
 ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Client/lastSuccessfulBuild/artifact/Client-Root.tar.gz /var/www/html/Client-Root.tar.gz
 RUN cd /var/www/html && tar -xf Client-Root.tar.gz && mv dist/student-mgmt-client/* . && rm -r dist Client-Root.tar.gz

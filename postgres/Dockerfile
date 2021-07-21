@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres:alpine
 
 ADD init-sparky.sql /docker-entrypoint-initdb.d/1-init-sparky.sql
 ADD init-stu-mgmt-backend.sql /docker-entrypoint-initdb.d/2-init-stu-mgmt-backend.sql

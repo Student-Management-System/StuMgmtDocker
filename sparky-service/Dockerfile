@@ -1,7 +1,6 @@
-FROM ubuntu:20.04
+FROM alpine
 
-RUN apt update -y
-RUN apt install -y openjdk-11-jre-headless libpostgresql-jdbc-java
+RUN apk add --no-cache openjdk11-jre-headless java-postgresql-jdbc
 
 WORKDIR /opt/SparkyService
 
