@@ -58,3 +58,16 @@ services:
             - FRONTEND_API_BASE_URL
         ports:
             - "${FRONTEND_PORT:-8000}:80"
+
+    svn:
+        image: stu-mgmt/svn
+        build:
+            context: ./svn
+        environment:
+            - SPARKY_DB_PW
+            - SVN_REPO_NAME=submission
+        ports:
+            - "${SVN_PORT:-8888}:80"
+        depends_on:
+            - postgres
+        profiles: ["svn"]
