@@ -19,7 +19,7 @@ COPY --from=builder /opt/StudentMgmtBackend .
 ADD production.yml ./config/production.yml
 
 ADD healthstatus.sh /
-HEALTHCHECK --interval=5s --timeout=5s --start-period=10s CMD /healthstatus.sh
+HEALTHCHECK --interval=5s --timeout=5s --start-period=30s CMD /healthstatus.sh
 
 EXPOSE 3000
 

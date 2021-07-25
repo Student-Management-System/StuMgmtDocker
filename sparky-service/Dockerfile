@@ -20,7 +20,7 @@ ADD application-release.properties ./application-release.properties
 #  SPARKY_LDAP_AD
 
 ADD healthstatus.sh /
-HEALTHCHECK --interval=5s --timeout=5s --start-period=20s CMD /healthstatus.sh
+HEALTHCHECK --interval=5s --timeout=5s --start-period=60s CMD /healthstatus.sh
 
 EXPOSE 8080
 
