@@ -69,5 +69,5 @@ services:
         ports:
             - "${SVN_PORT:-8888}:80"
         depends_on:
-            - postgres
+            - sparky-service
         profiles: ["svn"]
