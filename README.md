@@ -6,13 +6,13 @@ Most environment variables must be present when running the docker containers. T
 
 ## Building images
 
-1) run `docker compose build` to build all required docker images
+1) run `docker-compose build` to build all required docker images
 
 ## Running containers
 
-1) run `docker compose up -d` to run (and if required, also create) the containers (`-d` means run as daemon)
+1) run `docker-compose up -d` to run (and if required, also create) the containers (`-d` means run as daemon)
 
-2) run `docker compose stop` to stop the containers
+2) run `docker-compose stop` to stop the containers
 	* alternatively, run `docker compose down` to stop **and remove** the containers (removes state)
 
 ## Notes
