@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache openjdk11-jre-headless java-postgresql-jdbc
+RUN apk add --no-cache openjdk11-jre-headless java-postgresql-jdbc curl
 
 WORKDIR /opt/SparkyService
 
@@ -18,6 +18,9 @@ ADD application-release.properties ./application-release.properties
 #  SPARKY_LDAP_DOMAIN
 #  SPARKY_LDAP_URLS
 #  SPARKY_LDAP_AD
+
+ADD healthstatus.sh /
+HEALTHCHECK --interval=5s --timeout=5s --start-period=20s CMD /healthstatus.sh
 
 EXPOSE 8080
 
