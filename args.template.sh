@@ -54,3 +54,17 @@ export FRONTEND_API_BASE_URL=http://localhost:$SPARKY_PORT
 # The webmaster mail used in the apache configuration
 # build-time arg
 export FRONTEND_WEBMASTER=webmaster@localhost
+
+### SVN ###
+
+# The name of the SVN repository to create
+export SVN_REPO_NAME=submission
+
+# The course that the SVN repository is for
+export SVN_COURSE=java-wise2021
+
+# A username that is a teacher in the course
+export SVN_MGMT_USER=svnuser
+
+# The passsword for the teacher account
+export SVN_MGMT_PW=some_pw5
