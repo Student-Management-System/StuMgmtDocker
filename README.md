@@ -28,7 +28,15 @@ A bunch of environment variables contain configuration options that cannot be ha
 	* `BACKEND_PORT` (default: `3000`)
 	* `FRONTEND_PORT`  (default: `8000`)
 * You can pass the `--project-name some-name` command line argument to `docker-compose` (after the `compose`) to set a unique identifier for the deployment. This allows multiple independent instances to run in parallel (you will need to set different publish ports in this case, see above).
-* Pass `--profile svn` to also start an SVN server for submissions. It will be published under port `SVN_PORT` (default: `8888`) and have an repository under `/svn/` called `SVN_REPO_NAME` (default: `submission`); thus, it is typically reachable under `http://localhost:8888/svn/submission/`. It uses the auth service (sparky) for authentication, thus all users can log in with the same credentials. Note that you also need to pass `--profile svn` to the build command to build the svn image.
+* Run `docker-compose up -d svn` to also start an SVN server for submissions.
+	* Note that you also need to pass `--profile svn` to the build command to build the svn image.
+	* Typically, the SVN server can only be started after the course in the student management system has been created. You will need to pass the following environment variables to the docker container:
+		* `SVN_COURSE`: the ID of the course that the submission server is for (e.g. `java-wise2021`)
+		* `SVN_MGMT_USER`: the username of a teacher in the course
+		* `SVN_MGMT_PW`: the password of the teacher-user
+	* You also need to register the rights-management service on the SVN server as a subscriber to the course in the student management system. The URL for that is: `http://svn:4000/rest/update`
+	* The SVN itself will be published under port `SVN_PORT` (default: `8888`) and have a repository under `/svn/` called `SVN_REPO_NAME` (default: `submission`); thus, it is typically reachable under `http://localhost:8888/svn/submission/`.
+	* The SVN server uses the auth service (sparky) for authentication, thus all users can log in with the same credentials.
 
 ## TODO
 
