@@ -6,8 +6,8 @@ pushd /opt/rights-management
 cp settings_template.json settings.json
 
 echo "Preparing settings.json for rights-management"
-sed -i 's|${SVN_COURSE_NAME}|'"${SVN_COURSE##-}"'|g' settings.json
-sed -i 's|${SVN_COURSE_SEMESTER}|'"${SVN_COURSE%-}"'|g' settings.json
+sed -i 's|${SVN_COURSE_NAME}|'"${SVN_COURSE%-*}"'|g' settings.json
+sed -i 's|${SVN_COURSE_SEMESTER}|'"${SVN_COURSE##*-}"'|g' settings.json
 sed -i 's|${SVN_REPO_NAME}|'"$SVN_REPO_NAME"'|g' settings.json
 sed -i 's|${SVN_MGMT_USER}|'"$SVN_MGMT_USER"'|g' settings.json
 sed -i 's|${SVN_MGMT_PW}|'"$SVN_MGMT_PW"'|g' settings.json
