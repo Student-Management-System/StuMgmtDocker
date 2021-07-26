@@ -28,12 +28,9 @@ A bunch of environment variables contain configuration options that cannot be ha
 	* `BACKEND_PORT` (default: `3000`)
 	* `FRONTEND_PORT`  (default: `8000`)
 * You can pass the `--project-name some-name` command line argument to `docker-compose` (after the `compose`) to set a unique identifier for the deployment. This allows multiple independent instances to run in parallel (you will need to set different publish ports in this case, see above).
-* Pass `--profile svn` to also start an SVN server for submissions. It will be published under port `SVN_PORT` (default: `8888`) and have an repository under `/svn/` called `SVN_REPO_NAME` (default: `submission`); thus, it is typically reachable under `http://localhost:8888/svn/submission/`. It accesses the same database as the auth service (sparky) for authentication, thus all users in the LOCAL realm can log in with the same credentials.
+* Pass `--profile svn` to also start an SVN server for submissions. It will be published under port `SVN_PORT` (default: `8888`) and have an repository under `/svn/` called `SVN_REPO_NAME` (default: `submission`); thus, it is typically reachable under `http://localhost:8888/svn/submission/`. It uses the auth service (sparky) for authentication, thus all users can log in with the same credentials. Note that you also need to pass `--profile svn` to the build command to build the svn image.
 
 ## TODO
 
-- svn: RightsManagement service
 - sparky: set `spring.jpa.hibernate.ddl-auto = update` in `application-release.properties` after first successful run
 - backend: set `db.synchronize: false` in `production.yml` after first successful run
-- an apache as front-end with TLS certificates?
-	- use a `docker-compose.production.yml` file that extends `docker-compose.yml` for that?
