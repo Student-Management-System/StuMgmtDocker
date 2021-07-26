@@ -17,7 +17,8 @@ RUN a2ensite svn-repository
 
 ## Rights Management
 
-ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Rights-Management/lastSuccessfulBuild/artifact/target/RightsManagement-0.0.2-SNAPSHOT-jar-with-dependencies.jar /opt/rights-management/rights-management.jar
+ARG RIGHTS_MANAGEMENT_JAR
+ADD "${RIGHTS_MANAGEMENT_JAR}" /opt/rights-management/rights-management.jar
 ADD rights-management-settings.json /opt/rights-management/settings_template.json
 
 

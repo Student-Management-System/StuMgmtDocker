@@ -15,7 +15,7 @@ services:
         build:
             context: ./sparky-service
             args:
-                - SPARKY_VERSION
+                - SPARKY_JAR
         environment:
             - SPARKY_DB_PW
             - SPARKY_ADMIN_USER
@@ -34,6 +34,8 @@ services:
         image: stu-mgmt/stu-mgmt-backend
         build:
             context: ./stu-mgmt-backend
+            args:
+                - BACKEND_ARCHIVE
         environment:
             - DB_PASSWORD=$BACKEND_DB_PW
             - SMTP_ENABLED=$BACKEND_MAIL_ENABLED
@@ -52,6 +54,8 @@ services:
         image: stu-mgmt/stu-mgmt-frontend
         build:
             context: ./stu-mgmt-frontend
+            args:
+                - CLIENT_ARCHIVE
         environment:
             - FRONTEND_API_BASE_URL
             - FRONTEND_WEBMASTER
@@ -62,6 +66,8 @@ services:
         image: stu-mgmt/svn
         build:
             context: ./svn
+            args:
+                - RIGHTS_MANAGEMENT_JAR
         environment:
             - SVN_REPO_NAME=submission
             - SVN_COURSE

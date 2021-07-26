@@ -4,8 +4,8 @@ RUN apk add --no-cache openjdk11-jre-headless java-postgresql-jdbc curl
 
 WORKDIR /opt/SparkyService
 
-ARG SPARKY_VERSION
-ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Sparkyservice-Project/lastSuccessfulBuild/artifact/target/sparkyservice-api-${SPARKY_VERSION}-spring-boot.jar ./sparkyservice-spring-boot.jar
+ARG SPARKY_JAR
+ADD "$SPARKY_JAR" ./sparkyservice-spring-boot.jar
 
 ADD application-release.properties ./application-release.properties
 

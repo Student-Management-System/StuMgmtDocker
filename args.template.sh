@@ -1,4 +1,4 @@
-# Template for args.sh, environment variables used as build args
+# Template for args.sh, environment variables. Must be set when starting containers.
 # Real args.sh is not tracked, as it contains secret keys and passwords.
 
 ### PostgreSQL ###
@@ -7,10 +7,6 @@
 export POSTGRES_PASSWORD=some_pw0
 
 ### Sparky Service ###
-
-# The version of the sparky-service to pull from jenkins (required as the URL contains this)
-# build-time arg
-export SPARKY_VERSION=1.0.1-SNAPSHOT
 
 # The public (host) port where the sparky-service will be available
 export SPARKY_PORT=8080

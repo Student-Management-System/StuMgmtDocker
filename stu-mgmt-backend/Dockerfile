@@ -2,7 +2,8 @@ FROM node:14-alpine AS builder
 
 WORKDIR /opt/StudentMgmtBackend
 
-ADD https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Backend/lastSuccessfulBuild/artifact/Backend.tar.gz ./Backend.tar.gz
+ARG BACKEND_ARCHIVE
+ADD "$BACKEND_ARCHIVE" ./Backend.tar.gz
 RUN tar -xf Backend.tar.gz && rm Backend.tar.gz
 
 RUN npm install
