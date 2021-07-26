@@ -7,12 +7,20 @@ db:
   port: 5432
   database: "studentmgmt_db"
   username: "studentmgmt_db_user"
-  password: "__BACKEND_DB_PW__"
   synchronize: true
+
+notifications:
+  enabled: true
 
 authentication:
   url: "http://sparky-service:8080"
 
 logger:
+  levels:
+    - log
+    - error
+    - warn
+    - debug
+    - verbose
   requests: false
   dbErrors: true

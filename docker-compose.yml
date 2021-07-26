@@ -64,6 +64,9 @@ services:
             context: ./svn
         environment:
             - SVN_REPO_NAME=submission
+            - SVN_COURSE
+            - SVN_MGMT_USER
+            - SVN_MGMT_PW
         ports:
             - "${SVN_PORT:-8888}:80"
         depends_on:
