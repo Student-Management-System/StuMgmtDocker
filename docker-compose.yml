@@ -52,10 +52,9 @@ services:
         image: stu-mgmt/stu-mgmt-frontend
         build:
             context: ./stu-mgmt-frontend
-            args:
-                - FRONTEND_WEBMASTER
         environment:
             - FRONTEND_API_BASE_URL
+            - FRONTEND_WEBMASTER
         ports:
             - "${FRONTEND_PORT:-8000}:80"
 

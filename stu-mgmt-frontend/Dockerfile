@@ -12,9 +12,6 @@ RUN chown -R www-data:www-data /var/www/html
 
 ADD httpd.conf /usr/local/apache2/conf/httpd.conf
 
-ARG FRONTEND_WEBMASTER=webmaster@localhost
-RUN sed -i "s|__FRONTEND_WEBMASTER__|${FRONTEND_WEBMASTER}|g" /usr/local/apache2/conf/httpd.conf
-
 EXPOSE 80
 
 ENTRYPOINT [ "startup.sh" ]
