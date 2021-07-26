@@ -64,7 +64,6 @@ services:
         build:
             context: ./svn
         environment:
-            - SPARKY_DB_PW
             - SVN_REPO_NAME=submission
         ports:
             - "${SVN_PORT:-8888}:80"
