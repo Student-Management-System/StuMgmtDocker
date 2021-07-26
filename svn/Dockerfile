@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get update && apt-get install -qq -y subversion apache2 libapache2-mod-svn libapache2-mod-authnz-external curl openjdk-11-jre-headless
+RUN apt-get update && apt-get install -qq -y subversion apache2 libapache2-mod-svn libapache2-mod-authnz-external curl openjdk-11-jre-headless jq
 
 ADD authnz-external.conf /etc/apache2/conf-available/
 ADD svn-repository.conf /etc/apache2/sites-available/
