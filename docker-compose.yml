@@ -68,6 +68,7 @@ services:
             context: ./svn
             args:
                 - RIGHTS_MANAGEMENT_JAR
+                - SUBMISSION_CHECK_BUNDLE
         environment:
             - SVN_REPO_NAME=submission
             - SVN_COURSE

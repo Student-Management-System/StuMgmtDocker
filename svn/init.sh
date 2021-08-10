@@ -20,5 +20,27 @@ su -c "java -Dlog4j.configurationFile=log4j2.yaml -jar rights-management.jar" -s
 
 popd
 
+echo "Waiting for repository..."
+while [[ ! -d "/repository/$SVN_REPO_NAME" ]]
+do
+	sleep 0.1
+done
+
+if [[ ! -d "/repository/$SVN_REPO_NAME/hooks/submission-check" ]]
+then
+	echo "Installing SubmissionCheck hook"
+	pushd /opt/submission-check
+	./install.sh "/repository/$SVN_REPO_NAME"
+
+	cat >"/repository/$SVN_REPO_NAME/hooks/submission-check/config.properties" <<EOF
+all.checkstyle.rules = /opt/submission-check/checkstyle-rules.xml
+EOF
+
+	chown -R www-data:www-data "/repository/$SVN_REPO_NAME/hooks"
+	popd
+else
+	echo "Hook already installed in /repository/$SVN_REPO_NAME/hooks/submission-check"
+fi
+
 echo "Running $@"
 exec "$@"

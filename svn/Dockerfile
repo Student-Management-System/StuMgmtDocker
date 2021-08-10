@@ -21,6 +21,10 @@ ARG RIGHTS_MANAGEMENT_JAR
 ADD "${RIGHTS_MANAGEMENT_JAR}" /opt/rights-management/rights-management.jar
 ADD rights-management-settings.json /opt/rights-management/settings_template.json
 
+ARG SUBMISSION_CHECK_BUNDLE
+ADD "${SUBMISSION_CHECK_BUNDLE}" /opt/submission-check/submission-check-bundle.tar.gz
+ADD checkstyle-rules.xml /opt/submission-check/checkstyle-rules.xml
+RUN cd /opt/submission-check/ && tar -xf submission-check-bundle.tar.gz --strip-components=1 && rm submission-check-bundle.tar.gz
 
 EXPOSE 80
 ENTRYPOINT [ "/init.sh" ]
