@@ -20,11 +20,19 @@ su -c "java -Dlog4j.configurationFile=log4j2.yaml -jar rights-management.jar" -s
 
 popd
 
-echo "Waiting for repository..."
-while [[ ! -d "/repository/$SVN_REPO_NAME" ]]
+echo "Waiting for rights-management"
+code=""
+while [[ "$code" -ne "204" ]]
 do
 	sleep 0.1
+	code="$(curl \
+		--silent --output /dev/null \
+		--write-out "%{http_code}" \
+		--request GET "http://localhost:4000/rest/heartbeat" \
+		--header "accept: */*")"
 done
+
+echo "Rights-Management is up and reachable"
 
 if [[ ! -d "/repository/$SVN_REPO_NAME/hooks/submission-check" ]]
 then

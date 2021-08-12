@@ -26,6 +26,6 @@ ADD "${SUBMISSION_CHECK_BUNDLE}" /opt/submission-check/submission-check-bundle.t
 ADD checkstyle-rules.xml /opt/submission-check/checkstyle-rules.xml
 RUN cd /opt/submission-check/ && tar -xf submission-check-bundle.tar.gz --strip-components=1 && rm submission-check-bundle.tar.gz
 
-EXPOSE 80
+EXPOSE 80 4000
 ENTRYPOINT [ "/init.sh" ]
 CMD [ "apache2ctl", "-D", "FOREGROUND" ]
