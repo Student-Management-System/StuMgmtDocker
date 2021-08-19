@@ -1,7 +1,6 @@
 FROM httpd:alpine
 
 ADD ./startup.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/startup.sh
 
 # These env variable is used in startup.sh:
 #  FRONTEND_API_BASE_URL
