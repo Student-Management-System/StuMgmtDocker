@@ -55,9 +55,12 @@ export FRONTEND_API_BASE_URL=http://localhost:$SPARKY_PORT
 # build-time arg
 export FRONTEND_WEBMASTER=webmaster@localhost
 
-### exercise-submission-server ###
+### exercise-submitter-server ###
 
-# The public (host) port where the exercise-submission-server will be available
+# The public (host) port where the exercise-submitter-server will be available
 export SUBMISSION_SERVER_PORT=8001
 
-export SUBMISSION_SERVER_MGMT_USER=
+# Username and password that the exercise-submitter-server will use to access
+# the student management system
+export SUBMISSION_SERVER_MGMT_USER=exercise-submitter-server
+export SUBMISSION_SERVER_MGMT_PW=some_pw5
