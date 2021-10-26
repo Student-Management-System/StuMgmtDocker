@@ -62,20 +62,17 @@ services:
         ports:
             - "${FRONTEND_PORT:-8000}:80"
 
-    svn:
-        image: stu-mgmt/svn
+    exercise-submitter-server:
+        image : stu-mgmt/exercise-submitter-server
         build:
-            context: ./svn
+            context: ./exercise-submitter-server
             args:
-                - RIGHTS_MANAGEMENT_JAR
-                - SUBMISSION_CHECK_BUNDLE
+                - EXERCISE_SUBMISSION_SERVER_JAR
         environment:
-            - SVN_REPO_NAME=submission
-            - SVN_COURSE
-            - SVN_MGMT_USER
-            - SVN_MGMT_PW
+            - SUBMISSION_SERVER_MGMT_USER
+            - SUBMISSION_SERVER_MGMT_PW
         ports:
-            - "${SVN_PORT:-8888}:80"
+            - "${SUBMISSION_SERVER_PORT:-8001}:8080"
         depends_on:
             - sparky-service
-        profiles: ["svn"]
+            - stu-mgmt-backend

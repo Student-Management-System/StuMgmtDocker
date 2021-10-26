@@ -55,16 +55,9 @@ export FRONTEND_API_BASE_URL=http://localhost:$SPARKY_PORT
 # build-time arg
 export FRONTEND_WEBMASTER=webmaster@localhost
 
-### SVN ###
+### exercise-submission-server ###
 
-# The name of the SVN repository to create
-export SVN_REPO_NAME=submission
+# The public (host) port where the exercise-submission-server will be available
+export SUBMISSION_SERVER_PORT=8001
 
-# The course that the SVN repository is for
-export SVN_COURSE=java-wise2021
-
-# A username that is a teacher in the course
-export SVN_MGMT_USER=svnuser
-
-# The passsword for the teacher account
-export SVN_MGMT_PW=some_pw5
+export SUBMISSION_SERVER_MGMT_USER=
