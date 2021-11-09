@@ -13,6 +13,7 @@ RUN chmod a+r checkstyle.xml
 
 
 ADD healthstatus.sh /
+RUN chmod +x /healthstatus.sh
 HEALTHCHECK --interval=5s --timeout=5s --start-period=60s CMD /healthstatus.sh
 
 RUN adduser -S -D -H -G www-data www-data
