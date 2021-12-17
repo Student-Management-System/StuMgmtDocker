@@ -76,3 +76,19 @@ services:
         depends_on:
             - sparky-service
             - stu-mgmt-backend
+            
+    # Components of the WebIDE
+    api:
+        build: 
+            context: ./api/
+            args:
+                - PISTON_GIT
+        container_name: piston_api
+        restart: always
+        ports:
+            - "${PISTON_PORT:-2000}:2000"
+        volumes:
+            - ./data/piston:/piston
+        tmpfs:
+            - /piston/jobs:exec
+            - /tmp:exec

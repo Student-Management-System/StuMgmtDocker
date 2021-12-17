@@ -19,7 +19,7 @@ export SPARKY_ADMIN_USER=admin_user
 export SPARKY_ADMIN_PW=some_pw2
 
 # The JWT-secret for the sparky-service; must have a minimum size or else authentication always fails
-export SPARKY_JWT_SECRET="some_secret"
+export SPARKY_JWT_SECRET="some_secret_which_has_a_minimum_size:and_a_second_part_as_this_key_must_have_a_minimum_size_of_512_bits"
 
 # Configuration for the LDAP connection of sparky-service
 export SPARKY_LDAP=false
