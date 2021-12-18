@@ -14,5 +14,5 @@ export EXERCISE_SUBMISSION_SERVER_JAR="https://jenkins-2.sse.uni-hildesheim.de/j
 
 # Components of the WEB-IDE
 export PISTON_GIT="https://github.com/Student-Management-System/piston.git"
-export WEB_IDE_JAR="https://jenkins-2.sse.uni-hildesheim.de/view/Teaching/job/Teaching_Web-IDE/lastSuccessfulBuild/artifact/WEB-IDE.tar.gz"
+export WEB_IDE_ARCHIVE="https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Web-IDE/lastSuccessfulBuild/artifact/WEB-IDE.tar.gz"
 export CONVERGENCE_GIT="https://github.com/convergencelabs/convergence-docker-compose.git"

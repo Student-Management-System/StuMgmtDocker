@@ -92,3 +92,19 @@ services:
         tmpfs:
             - /piston/jobs:exec
             - /tmp:exec
+            
+    web-ide:
+        image: stu-mgmt/web-ide
+        build:
+            context: ./web-ide
+            args:
+                - WEB_IDE_ARCHIVE
+        environment:
+            - FRONTEND_API_BASE_URL
+            - WEB_IDE_CODE_EXECUTION_PATH
+            - SUBMISSION_SERVER_PATH
+        ports:
+            - "${WEB_IDE_PORT:-8002}:80"
+        depends_on:
+            - stu-mgmt-backend
+            - api
