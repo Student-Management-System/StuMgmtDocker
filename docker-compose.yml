@@ -61,6 +61,7 @@ services:
             - FRONTEND_WEBMASTER
         ports:
             - "${FRONTEND_PORT:-8000}:80"
+        profiles: [frontend]
 
     exercise-submitter-server:
         image : stu-mgmt/exercise-submitter-server
@@ -78,12 +79,12 @@ services:
             - stu-mgmt-backend
             
     # Components of the WebIDE
-    api:
+    code-exec:
         build: 
-            context: ./api/
+            context: ./code-exec/
             args:
                 - PISTON_GIT
-        container_name: piston_api
+        container_name: code-exec
         restart: always
         ports:
             - "${PISTON_PORT:-2000}:2000"
@@ -92,6 +93,7 @@ services:
         tmpfs:
             - /piston/jobs:exec
             - /tmp:exec
+        profiles: [frontend]
             
     web-ide:
         image: stu-mgmt/web-ide
@@ -107,7 +109,8 @@ services:
             - "${WEB_IDE_PORT:-8002}:80"
         depends_on:
             - stu-mgmt-backend
-            - api
+            - code-exec
+        profiles: [frontend]
             
     # Convergence (pair-programming) requires a bunch of services
     # for this reason, convergence is currently not included in
@@ -127,3 +130,4 @@ services:
             - SUBMISSION_SERVER_PATH
         ports:
             - "${SHOWCASE_PORT:-80}:80"
+        profiles: [frontend]
