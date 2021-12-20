@@ -108,3 +108,22 @@ services:
         depends_on:
             - stu-mgmt-backend
             - api
+            
+    # Convergence (pair-programming) requires a bunch of services
+    # for this reason, convergence is currently not included in
+    # this demo Docker set-up
+    
+    # Showcase
+    showcase:
+        image: stu-mgmt/showcase
+        build:
+            context: ./showcase
+        environment:
+            - SPARKY_SWAGGER_URL
+            - FRONTEND_API_BASE_URL
+            - FRONTEND_URL
+            - BACKEND_SWAGGER_URL
+            - WEB_IDE_URL
+            - SUBMISSION_SERVER_PATH
+        ports:
+            - "${SHOWCASE_PORT:-80}:80"
