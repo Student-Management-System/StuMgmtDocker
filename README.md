@@ -17,6 +17,8 @@ A bunch of environment variables contain configuration options that cannot be ha
 0) `source args.sh`
 
 1) run `docker-compose up -d` to run (and if required, also create) the containers (`-d` means run as daemon)
+	* You may run `docker-compose --profile frontend up -d` to run all containers, including containers, which are intended to demonstrate the the frontend services.
+	* You may open <http://localhost>, when running the `frontend` profile. This page provides a list of all available services and API routes.
 
 2) run `docker-compose stop` to stop the containers
 	* alternatively, run `docker-compose down` to stop **and remove** the containers (removes state)
@@ -28,6 +30,9 @@ A bunch of environment variables contain configuration options that cannot be ha
 	* `BACKEND_PORT` (default: `3000`)
 	* `FRONTEND_PORT` (default: `8000`)
 	* `SUBMISSION_SERVER_PORT` (default: `8001`)
+	* `PISTON_PORT` (default `2000`, only used when running the `frontend` profile)
+	* `WEB_IDE_PORT` (default `8002`, only used when running the `frontend` profile)
+	* `SHOWCASE_PORT` (default `80`, only used when running the `frontend` profile)
 * You can pass the `--project-name some-name` command line argument to `docker-compose` (after the `compose`) to set a unique identifier for the deployment. This allows multiple independent instances to run in parallel (you will need to set different publish ports in this case, see above).
 
 ## TODO
