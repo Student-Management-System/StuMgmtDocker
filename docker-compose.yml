@@ -124,6 +124,8 @@ services:
         image: stu-mgmt/showcase
         build:
             context: ./showcase
+            args:
+                - USER_SPARKY_JAR
         environment:
             - SPARKY_SWAGGER_URL
             - FRONTEND_API_BASE_URL
