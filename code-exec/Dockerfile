@@ -21,21 +21,25 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 WORKDIR /piston_api
 ARG PISTON_GIT
 RUN git clone "$PISTON_GIT" .
-#WORKDIR /piston_api
-#COPY ["package.json", "package-lock.json", "./"]
+RUN sed -i 's|origin: "https://webide.sse.uni-hildesheim.de",|origin: "*",|g' /piston_api/api/src/api/v2.js
+
 WORKDIR /piston_api/api
 RUN npm install
-#COPY ./src ./src
-
-RUN make -C ./src/nosocket/ all && make -C ./src/nosocket/ install
-
-CMD [ "node", "src"]
 
 WORKDIR /piston_api/cli
 RUN npm i
 
-WORKDIR /piston_api
-RUN cli/index.js "ppman install java"
-RUN cli/index.js "ppman install python"
+# Create data directory
+WORKDIR /piston
+# Temporarily start application to install packages
+WORKDIR /piston_api/api
+# Based on: https://stackoverflow.com/q/50211207
+RUN nohup bash -c "node src &" && sleep 300 && /piston_api/cli/index.js ppman install java
+
+# Disable outgoing network connections -> must be last
+RUN make -C ./src/nosocket/ all && make -C ./src/nosocket/ install
+CMD [ "node", "src"]
+
+WORKDIR /piston_api/api
 
 EXPOSE 2000/tcp
