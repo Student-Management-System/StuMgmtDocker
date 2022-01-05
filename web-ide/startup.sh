@@ -10,7 +10,7 @@ cat >/var/www/html/env.js <<EOF
         window.__env.STUDENT_MGMT_BASE_PATH = "$FRONTEND_API_BASE_URL/stmgmt";
         window.__env.AUTH_BASE_PATH = "$FRONTEND_API_BASE_URL";
         window.__env.PISTON_CODE_EXECUTION_BASE_PATH = "$WEB_IDE_CODE_EXECUTION_PATH";
-        window.__env.EXERCISE_SUBMITTER_BASE_PATH = "SUBMISSION_SERVER_PATH";
+        window.__env.EXERCISE_SUBMITTER_BASE_PATH = "$SUBMISSION_SERVER_PATH";
 })(this);
 EOF
 
