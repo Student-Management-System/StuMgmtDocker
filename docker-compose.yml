@@ -77,14 +77,14 @@ services:
         depends_on:
             - sparky-service
             - stu-mgmt-backend
-            
+
     # Components of the WebIDE
     code-exec:
-        build: 
+        image: stu-mgmt/code-exec
+        build:
             context: ./code-exec/
             args:
                 - PISTON_GIT
-        container_name: code-exec
         restart: always
         ports:
             - "${PISTON_PORT:-2000}:2000"
@@ -94,7 +94,7 @@ services:
             - /piston/jobs:exec
             - /tmp:exec
         profiles: [frontend]
-            
+
     web-ide:
         image: stu-mgmt/web-ide
         build:
@@ -114,11 +114,11 @@ services:
             - stu-mgmt-backend
             - code-exec
         profiles: [frontend]
-            
+
     # Convergence (pair-programming) requires a bunch of services
     # for this reason, convergence is currently not included in
     # this demo Docker set-up
-    
+
     # Showcase
     showcase:
         image: stu-mgmt/showcase
