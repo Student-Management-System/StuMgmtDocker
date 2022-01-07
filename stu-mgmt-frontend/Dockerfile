@@ -7,7 +7,7 @@ ADD ./startup.sh /usr/local/bin
 
 ARG CLIENT_ARCHIVE
 ADD "$CLIENT_ARCHIVE" /var/www/html/Client-Root.tar.gz
-RUN cd /var/www/html && tar -xf Client-Root.tar.gz && mv dist/student-mgmt-client/* . && rm -r dist Client-Root.tar.gz
+RUN cd /var/www/html && tar -xf Client-Root.tar.gz && mv dist/apps/client/* . && rm -r dist Client-Root.tar.gz
 RUN chown -R www-data:www-data /var/www/html
 
 ADD httpd.conf /usr/local/apache2/conf/httpd.conf
