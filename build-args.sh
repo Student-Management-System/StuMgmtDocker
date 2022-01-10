@@ -14,6 +14,9 @@ export EXERCISE_SUBMISSION_SERVER_JAR="https://jenkins-2.sse.uni-hildesheim.de/j
 
 # Components of the WEB-IDE
 export PISTON_GIT="https://github.com/Student-Management-System/piston.git"
+# Time that is requred to download ~180MB and unpack them
+# With 11 MB you need ~ 240 sec. -> 300 sec includes a buffer and is inteded for lower bandwith
+export PISTON_JAVA_DOWNLOAD_DURATION=300
 export USER_SPARKY_JAR="https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_UserSparky/lastSuccessfulBuild/artifact/target/user-sparky-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
 export WEB_IDE_ARCHIVE="https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Web-IDE/lastSuccessfulBuild/artifact/WEB-IDE-Root.tar.gz"
 export CONVERGENCE_GIT="https://github.com/convergencelabs/convergence-docker-compose.git"

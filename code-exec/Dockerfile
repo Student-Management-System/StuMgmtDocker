@@ -29,12 +29,13 @@ RUN npm install
 WORKDIR /piston_api/cli
 RUN npm i
 
+ARG PISTON_JAVA_DOWNLOAD_DURATION
 # Create data directory
 WORKDIR /piston
 # Temporarily start application to install packages
 WORKDIR /piston_api/api
 # Based on: https://stackoverflow.com/q/50211207
-RUN nohup bash -c "node src &" && sleep 300 && /piston_api/cli/index.js ppman install java
+RUN nohup bash -c "node src &" && sleep $PISTON_JAVA_DOWNLOAD_DURATION && /piston_api/cli/index.js ppman install java
 
 # Disable outgoing network connections -> must be last
 RUN make -C ./src/nosocket/ all && make -C ./src/nosocket/ install
