@@ -45,13 +45,6 @@ export BACKEND_SWAGGER_URL=http://localhost:$BACKEND_PORT/api/
 # The password of the stu-mgmt-backend database in postgres
 export BACKEND_DB_PW=some_pw3
 
-# Configuration for the mail connection of the stu-mgmt-backend
-export BACKEND_MAIL_ENABLED=false
-export BACKEND_MAIL_SERVER=mail.company.org
-export BACKEND_MAIL_PORT=587
-export BACKEND_MAIL_USERNAME=stu-mgmt@company.org
-export BACKEND_MAIL_PASSWORD=some_pw4
-
 ### Stu-Mgmt Frontend ###
 
 # The public (host) port where the stu-mgmt-frontend will be available
