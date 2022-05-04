@@ -38,11 +38,6 @@ services:
                 - BACKEND_ARCHIVE
         environment:
             - DB_PASSWORD=$BACKEND_DB_PW
-            - SMTP_ENABLED=$BACKEND_MAIL_ENABLED
-            - SMTP_HOST=$BACKEND_MAIL_SERVER
-            - SMTP_PORT=$BACKEND_MAIL_PORT
-            - SMTP_USERNAME=$BACKEND_MAIL_USERNAME
-            - SMTP_PASSWORD=$BACKEND_MAIL_PASSWORD
         # comment this if the backend should not be reachable from outside the docker network
         ports:
             - "${BACKEND_PORT:-3000}:3000"

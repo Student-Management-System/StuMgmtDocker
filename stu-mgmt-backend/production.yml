@@ -15,6 +15,9 @@ notifications:
 authentication:
   url: "http://sparky-service:8080"
 
+mailing:
+  enabled: false
+
 logger:
   levels:
     - log
