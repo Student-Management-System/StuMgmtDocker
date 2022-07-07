@@ -5,7 +5,7 @@
 SPARKY_VERSION=${SPARKY_VERSION:-"1.0.1-SNAPSHOT"}
 
 # Helper variable: the version of exercise-submission-server to pull from jenkins
-EXERCISE_SUBMISSION_SERVER_VERSION=${EXERCISE_SUBMISSION_SERVER_VERSION:-"0.0.1-SNAPSHOT"}
+EXERCISE_SUBMISSION_SERVER_VERSION=${EXERCISE_SUBMISSION_SERVER_VERSION:-"1.0.2-SNAPSHOT"}
 
 export SPARKY_JAR="https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_Sparkyservice-Project/lastSuccessfulBuild/artifact/target/sparkyservice-api-${SPARKY_VERSION}-spring-boot.jar"
 export BACKEND_ARCHIVE="https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Backend/lastSuccessfulBuild/artifact/Backend.tar.gz"
