@@ -1,4 +1,4 @@
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 
 WORKDIR /opt/StudentMgmtBackend
 
@@ -9,7 +9,7 @@ RUN tar -xf Backend.tar.gz && rm Backend.tar.gz
 RUN npm install
 
 
-FROM node:14-alpine
+FROM node:16-alpine
 
 RUN apk add --no-cache curl
 
