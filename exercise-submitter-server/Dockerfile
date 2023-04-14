@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache openjdk11-jre-headless curl
+RUN apk add --no-cache openjdk17-jre-headless curl
 
 WORKDIR /opt/exercise-submission-server
 
