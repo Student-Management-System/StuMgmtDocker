@@ -31,13 +31,19 @@ services:
             - postgres
 
     stu-mgmt-backend:
-        image: stu-mgmt/stu-mgmt-backend
-        build:
-            context: ./stu-mgmt-backend
-            args:
-                - BACKEND_ARCHIVE
+        image: ghcr.io/e-learning-by-sse/qualityplus-student-management-service:latest
         environment:
-            - DB_PASSWORD=$BACKEND_DB_PW
+            - DB_USER=studentmgmt_db_user
+            - DB_PASSWORD=${POSTGRES_PASSWORD}
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_DATABASE=studentmgmt_db
+            - DB_TYPE=postgres
+            - TYPEORM_SYNC=true
+            - AUTHENTICATION_BASE_PATH=http://sparky-service:8080
+            - SERVER_PORT=3000
+            - NOTIFICATIONS_ENABLED=true
+            - LOG_CONFIG=true
         # comment this if the backend should not be reachable from outside the docker network
         ports:
             - "${BACKEND_PORT:-3000}:3000"
